@@ -1,0 +1,2968 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "beego Test API",
+        "description": "beego has a very cool tools to autogenerate documents for your API\n",
+        "version": "1.0.0",
+        "termsOfService": "http://beego.me/",
+        "contact": {
+            "email": "astaxie@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "basePath": "/v1",
+    "paths": {
+        "/app-service/add-branch": {
+            "post": {
+                "tags": [
+                    "app-service"
+                ],
+                "description": "create System\n\u003cbr\u003e",
+                "operationId": "SystemController.Create",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for System content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/requests.BranchRequestDTO"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.BranchResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/app-service/delete-branch/{id}": {
+            "delete": {
+                "tags": [
+                    "app-service"
+                ],
+                "description": "delete the Branches\n\u003cbr\u003e",
+                "operationId": "SystemController.Delete Branch",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        },
+        "/app-service/get-branch/{id}": {
+            "get": {
+                "tags": [
+                    "app-service"
+                ],
+                "description": "get Branch\n\u003cbr\u003e",
+                "operationId": "SystemController.GetOneBranch",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.BranchOriResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            }
+        },
+        "/app-service/get-branches": {
+            "get": {
+                "tags": [
+                    "app-service"
+                ],
+                "description": "get branches\n\u003cbr\u003e",
+                "operationId": "SystemController.GetAllBranches",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.BranchesResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/app-service/get-countries": {
+            "get": {
+                "tags": [
+                    "app-service"
+                ],
+                "description": "get Countries\n\u003cbr\u003e",
+                "operationId": "SystemController.GetAllCountries",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.CountriesResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/app-service/get-id-types": {
+            "get": {
+                "tags": [
+                    "app-service"
+                ],
+                "description": "get all ID types\n\u003cbr\u003e",
+                "operationId": "SystemController.Get All ID Types",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.IDTypesGatewayResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/app-service/update-branch/{id}": {
+            "put": {
+                "tags": [
+                    "app-service"
+                ],
+                "description": "update a Branch\n\u003cbr\u003e",
+                "operationId": "SystemController.Update Branch",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Branches content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/requests.BranchRequestDTO"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.BranchResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is not int"
+                    }
+                }
+            }
+        },
+        "/auth/change-password": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "description": "Change user password\n\u003cbr\u003e",
+                "operationId": "AuthenticationController.Change Password",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Authentication content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/requests.ChangePassword"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.StringResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/auth/register": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "description": "Register a User\n\u003cbr\u003e",
+                "operationId": "AuthenticationController.Create New User",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Registration content.",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/requests.Registration"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.StringResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/auth/sign-in": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "description": "sign user in\n\u003cbr\u003e",
+                "operationId": "AuthenticationController.SignIn",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Authentication content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/requests.SignIn"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.StringResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/customers/": {
+            "get": {
+                "tags": [
+                    "customers"
+                ],
+                "description": "get Customermanagement\n\u003cbr\u003e",
+                "operationId": "CustomermanagementController.GetAll",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Customermanagement"
+                        }
+                    },
+                    "403": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "customers"
+                ],
+                "description": "create Customermanagement\n\u003cbr\u003e",
+                "operationId": "CustomermanagementController.Create",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Customermanagement content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/requests.AddCustomer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.CustomerGatewayResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/customers/upload-customer-image": {
+            "post": {
+                "tags": [
+                    "customers"
+                ],
+                "description": "Update Customer's Image\n\u003cbr\u003e",
+                "operationId": "CustomermanagementController.UpdateCustomerImage",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "Image",
+                        "description": "Item Image",
+                        "required": true,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.StringResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/customers/{id}": {
+            "get": {
+                "tags": [
+                    "customers"
+                ],
+                "description": "get Customermanagement by id\n\u003cbr\u003e",
+                "operationId": "CustomermanagementController.GetOne",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Customermanagement"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "customers"
+                ],
+                "description": "update the Customermanagement\n\u003cbr\u003e",
+                "operationId": "CustomermanagementController.Put",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Customermanagement content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Customermanagement"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Customermanagement"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is not int"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "customers"
+                ],
+                "description": "delete the Customermanagement\n\u003cbr\u003e",
+                "operationId": "CustomermanagementController.Delete",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        },
+        "/items/add-product-type": {
+            "post": {
+                "tags": [
+                    "items"
+                ],
+                "description": "Add Product type\n\u003cbr\u003e",
+                "operationId": "ItemsController.Add Product Type",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "CategoryImage",
+                        "description": "Category Image",
+                        "required": true,
+                        "type": "file"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "CategoryName",
+                        "description": "Category name",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.CategoryResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/items/add-rental-product": {
+            "post": {
+                "tags": [
+                    "items"
+                ],
+                "description": "Add an item for rent\n\u003cbr\u003e",
+                "operationId": "ItemsController.Add Rentals Item",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Authentication content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/requests.AddRentalItemRequestDTO"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.ItemResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/items/add-sales-product": {
+            "post": {
+                "tags": [
+                    "items"
+                ],
+                "description": "Add an item for sale\n\u003cbr\u003e",
+                "operationId": "ItemsController.Add Item",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Authentication content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/requests.AddSalesItemRequestDTO"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.ItemResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/items/get-product-types": {
+            "get": {
+                "tags": [
+                    "items"
+                ],
+                "description": "Get Product types\n\u003cbr\u003e",
+                "operationId": "ItemsController.Get Product Types",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.CategoriesResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/items/get-product/{id}": {
+            "get": {
+                "tags": [
+                    "items"
+                ],
+                "description": "Get Product\n\u003cbr\u003e",
+                "operationId": "ItemsController.Get Product",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.ItemResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/items/get-products": {
+            "get": {
+                "tags": [
+                    "items"
+                ],
+                "description": "Get Items\n\u003cbr\u003e",
+                "operationId": "ItemsController.Get Items",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.ItemsResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/items/update-product/{id}": {
+            "put": {
+                "tags": [
+                    "items"
+                ],
+                "description": "Add an item\n\u003cbr\u003e",
+                "operationId": "ItemsController.Update Item",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Authentication content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/requests.UpdateItemRequestDTO"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.ItemResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/items/upload-product-image": {
+            "post": {
+                "tags": [
+                    "items"
+                ],
+                "description": "Update User's Image\n\u003cbr\u003e",
+                "operationId": "ItemsController.UpdateImage",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "Image",
+                        "description": "Item Image",
+                        "required": true,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.StringResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/order/place-rental-request": {
+            "post": {
+                "tags": [
+                    "order"
+                ],
+                "description": "Place an order to rent a product\n\u003cbr\u003e",
+                "operationId": "TransactionsController.Place Rental Request",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Transactions content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/requests.RentalRequestDTO"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Transactions"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/order/place-sales-request": {
+            "post": {
+                "tags": [
+                    "order"
+                ],
+                "description": "Place an order to buy a product\n\u003cbr\u003e",
+                "operationId": "TransactionsController.Place Sales Request",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Transactions content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/requests.SalesRequestDTO"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Transactions"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/payments/payment-methods": {
+            "get": {
+                "tags": [
+                    "payments"
+                ],
+                "description": "get Payment\n\u003cbr\u003e",
+                "operationId": "PaymentController.GetAll",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.PaymentMethodsResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/payments/upload-payment-proof": {
+            "post": {
+                "tags": [
+                    "payments"
+                ],
+                "description": "Update User's Image\n\u003cbr\u003e",
+                "operationId": "PaymentController.Update Payment Proof",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "Image",
+                        "description": "Item Image",
+                        "required": true,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.StringResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/stats/get-stats": {
+            "get": {
+                "tags": [
+                    "stats"
+                ],
+                "description": "Get Stats of Branch\n\u003cbr\u003e",
+                "operationId": "StatsController.Get Stats Per Branch",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.ItemsResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/user/get-branch-managers": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Get all branch managers users\n\u003cbr\u003e",
+                "operationId": "UserManagementController.Get Branch Managers",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.UsersGatewayResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/user/get-invites": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Get all invites\n\u003cbr\u003e",
+                "operationId": "UserManagementController.Get Invites",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.UserInvitesResponse"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/user/get-roles": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Get all roles\n\u003cbr\u003e",
+                "operationId": "UserManagementController.Get Roles",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.RolesAllGatewayResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/user/get-user-invite/{token}": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Get user invite\n\u003cbr\u003e",
+                "operationId": "UserManagementController.Get User Invite",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "token",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.UserInviteResponse"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/user/get-user-session": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Get user\n\u003cbr\u003e",
+                "operationId": "UserManagementController.Get User Session",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.UserGatewayResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/user/get-user-with-id/{id}": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Get user using ID\n\u003cbr\u003e",
+                "operationId": "UserManagementController.Get User with ID",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.UserGatewayResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/user/get-users": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Get all users\n\u003cbr\u003e",
+                "operationId": "UserManagementController.Get Users",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.UsersGatewayResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/user/get-users-under-branch/{branch_id}": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Get all users under specified branch\n\u003cbr\u003e",
+                "operationId": "UserManagementController.Get Users Under Branch",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "branch_id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.UsersGatewayResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/user/invite-user": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Invite user to register using email or username or phone number\n\u003cbr\u003e",
+                "operationId": "UserManagementController.Invite User",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Registration content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/requests.InviteRequestDTO"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.StringResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/user/log-out": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Log User Out\n\u003cbr\u003e",
+                "operationId": "UserManagementController.Log Out",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.UserGatewayResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/user/revoke-invite/{id}": {
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Update User's Invite token\n\u003cbr\u003e",
+                "operationId": "UserManagementController.UpdateUserInvite Token",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.UserInviteResponse"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/user/update-user-branch/{userid}": {
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Update User's Branch\n\u003cbr\u003e",
+                "operationId": "UserManagementController.Update User Branch",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "userid",
+                        "description": "The userid id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body to update",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/requests.UpdateUserBranchRequestDTO"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.UserGatewayResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/user/update-user-image": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Update User's Image\n\u003cbr\u003e",
+                "operationId": "UserManagementController.UpdateImage",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "UserImage",
+                        "description": "User Image",
+                        "required": true,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.StringResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/user/update-user-role/{userid}": {
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Update User's role\n\u003cbr\u003e",
+                "operationId": "UserManagementController.Update User Role",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "userid",
+                        "description": "The userid id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body to update",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/requests.UpdateUserRoleRequestDTO"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.UserGatewayResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/user/update-user/{id}": {
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Update User's details\n\u003cbr\u003e",
+                "operationId": "UserManagementController.UpdateUserDetails",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "header for User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body to update",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/requests.UpdateUserRequestDTO"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.UserGatewayResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/user/verify-invite": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Verify invite\n\u003cbr\u003e",
+                "operationId": "UserManagementController.Verify Invite",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Registration content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/requests.StringRequestDTO"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.StringResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "1234.\u003cnil\u003e.CountryResp": {
+            "title": "CountryResp",
+            "type": "object"
+        },
+        "14104.\u003cnil\u003e.UserInvites": {
+            "title": "UserInvites",
+            "type": "object"
+        },
+        "2230.\u003cnil\u003e.BranchResp": {
+            "title": "BranchResp",
+            "type": "object"
+        },
+        "2819.\u003cnil\u003e.Categories": {
+            "title": "Categories",
+            "type": "object"
+        },
+        "5419.\u003cnil\u003e.IDTypeResponse": {
+            "title": "IDTypeResponse",
+            "type": "object"
+        },
+        "7579.\u003cnil\u003e.Item": {
+            "title": "Item",
+            "type": "object"
+        },
+        "8570.\u003cnil\u003e.PaymentMethods": {
+            "title": "PaymentMethods",
+            "type": "object"
+        },
+        "9143.\u003cnil\u003e.Roles": {
+            "title": "Roles",
+            "type": "object"
+        },
+        "9541.\u003cnil\u003e.UserGateway": {
+            "title": "UserGateway",
+            "type": "object"
+        },
+        "models.Customermanagement": {
+            "title": "Customermanagement",
+            "type": "object"
+        },
+        "models.Transactions": {
+            "title": "Transactions",
+            "type": "object"
+        },
+        "requests.AddCustomer": {
+            "title": "AddCustomer",
+            "type": "object",
+            "properties": {
+                "Email": {
+                    "type": "string"
+                },
+                "IdNumber": {
+                    "type": "string"
+                },
+                "IdType": {
+                    "type": "string"
+                },
+                "ImagePath": {
+                    "type": "string"
+                },
+                "Location": {
+                    "type": "string"
+                },
+                "Name": {
+                    "type": "string"
+                },
+                "PhoneNumber": {
+                    "type": "string"
+                }
+            }
+        },
+        "requests.AddRentalItemRequestDTO": {
+            "title": "AddRentalItemRequestDTO",
+            "type": "object",
+            "properties": {
+                "BranchId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "ImagePath": {
+                    "type": "string"
+                },
+                "ProductName": {
+                    "type": "string"
+                },
+                "Quantity": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "RentalPrice": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "ReorderLevel": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "requests.AddSalesItemRequestDTO": {
+            "title": "AddSalesItemRequestDTO",
+            "type": "object",
+            "properties": {
+                "BranchId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "CostPrice": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "ImagePath": {
+                    "type": "string"
+                },
+                "ProductName": {
+                    "type": "string"
+                },
+                "Quantity": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "SellingPrice": {
+                    "type": "number",
+                    "format": "double"
+                }
+            }
+        },
+        "requests.BranchRequestDTO": {
+            "title": "BranchRequestDTO",
+            "type": "object",
+            "properties": {
+                "Branch": {
+                    "type": "string"
+                },
+                "BranchManager": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "CountryCode": {
+                    "type": "string"
+                },
+                "Location": {
+                    "type": "string"
+                },
+                "PhoneNumber": {
+                    "type": "string"
+                }
+            }
+        },
+        "requests.ChangePassword": {
+            "title": "ChangePassword",
+            "type": "object",
+            "properties": {
+                "NewPassword": {
+                    "type": "string"
+                },
+                "OldPassword": {
+                    "type": "string"
+                }
+            }
+        },
+        "requests.InviteRequestDTO": {
+            "title": "InviteRequestDTO",
+            "type": "object",
+            "properties": {
+                "Email": {
+                    "type": "string"
+                },
+                "Role": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "requests.Product": {
+            "title": "Product",
+            "type": "object",
+            "properties": {
+                "ProductId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Quantity": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "requests.Registration": {
+            "title": "Registration",
+            "type": "object",
+            "properties": {
+                "Email": {
+                    "type": "string"
+                },
+                "FirstName": {
+                    "type": "string"
+                },
+                "LastName": {
+                    "type": "string"
+                },
+                "Password": {
+                    "type": "string"
+                },
+                "PhoneNumber": {
+                    "type": "string"
+                },
+                "Token": {
+                    "type": "string"
+                }
+            }
+        },
+        "requests.RentalRequestDTO": {
+            "title": "RentalRequestDTO",
+            "type": "object",
+            "properties": {
+                "CustomerId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "OrderEndDate": {
+                    "type": "string"
+                },
+                "OrderLocation": {
+                    "type": "string"
+                },
+                "OrderStartDate": {
+                    "type": "string"
+                },
+                "PaymentMethodId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "PaymentProofImageUrl": {
+                    "type": "string"
+                },
+                "Products": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/requests.Product"
+                    }
+                }
+            }
+        },
+        "requests.SalesRequestDTO": {
+            "title": "SalesRequestDTO",
+            "type": "object",
+            "properties": {
+                "CustomerId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "OrderDate": {
+                    "type": "string"
+                },
+                "PaymentMethodId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "PaymentProofImageUrl": {
+                    "type": "string"
+                },
+                "Products": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/requests.Product"
+                    }
+                }
+            }
+        },
+        "requests.SignIn": {
+            "title": "SignIn",
+            "type": "object",
+            "properties": {
+                "Email": {
+                    "type": "string"
+                },
+                "Password": {
+                    "type": "string"
+                }
+            }
+        },
+        "requests.StringRequestDTO": {
+            "title": "StringRequestDTO",
+            "type": "object",
+            "properties": {
+                "Value": {
+                    "type": "string"
+                }
+            }
+        },
+        "requests.UpdateItemRequestDTO": {
+            "title": "UpdateItemRequestDTO",
+            "type": "object",
+            "properties": {
+                "BranchId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "CostPrice": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "ImagePath": {
+                    "type": "string"
+                },
+                "ProductName": {
+                    "type": "string"
+                },
+                "ProductTypeId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Quantity": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "SellingPrice": {
+                    "type": "number",
+                    "format": "double"
+                }
+            }
+        },
+        "requests.UpdateUserBranchRequestDTO": {
+            "title": "UpdateUserBranchRequestDTO",
+            "type": "object",
+            "properties": {
+                "BranchId": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "requests.UpdateUserRequestDTO": {
+            "title": "UpdateUserRequestDTO",
+            "type": "object",
+            "properties": {
+                "Address": {
+                    "type": "string"
+                },
+                "BranchId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Dob": {
+                    "type": "string"
+                },
+                "FirstName": {
+                    "type": "string"
+                },
+                "Gender": {
+                    "type": "string"
+                },
+                "LastName": {
+                    "type": "string"
+                },
+                "PhoneNumber": {
+                    "type": "string"
+                },
+                "RoleId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Username": {
+                    "type": "string"
+                }
+            }
+        },
+        "requests.UpdateUserRoleRequestDTO": {
+            "title": "UpdateUserRoleRequestDTO",
+            "type": "object",
+            "properties": {
+                "RoleId": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "responses.BranchOriResponseDTO": {
+            "title": "BranchOriResponseDTO",
+            "type": "object",
+            "properties": {
+                "Branch": {
+                    "$ref": "#/definitions/responses.Branches"
+                },
+                "StatusCode": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "StatusDesc": {
+                    "type": "string"
+                }
+            }
+        },
+        "responses.BranchResp": {
+            "title": "BranchResp",
+            "type": "object",
+            "properties": {
+                "Branch": {
+                    "type": "string"
+                },
+                "BranchId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "BranchManager": {
+                    "$ref": "#/definitions/responses.UserGateway"
+                },
+                "DateCreated": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Location": {
+                    "type": "string"
+                },
+                "PhoneNumber": {
+                    "type": "string"
+                }
+            }
+        },
+        "responses.BranchResponseDTO": {
+            "title": "BranchResponseDTO",
+            "type": "object",
+            "properties": {
+                "Result": {
+                    "$ref": "#/definitions/responses.BranchResp"
+                },
+                "StatusDesc": {
+                    "type": "string"
+                },
+                "Success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "responses.Branches": {
+            "title": "Branches",
+            "type": "object",
+            "properties": {
+                "Active": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Branch": {
+                    "type": "string"
+                },
+                "BranchId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "BranchManager": {
+                    "$ref": "#/definitions/responses.Users"
+                },
+                "Country": {
+                    "$ref": "#/definitions/responses.Countries"
+                },
+                "CreatedBy": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "DateCreated": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "DateModified": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Location": {
+                    "type": "string"
+                },
+                "ModifiedBy": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "PhoneNumber": {
+                    "type": "string"
+                }
+            }
+        },
+        "responses.BranchesData": {
+            "title": "BranchesData",
+            "type": "object",
+            "properties": {
+                "Count": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Data": {
+                    "$ref": "#/definitions/2230.\u003cnil\u003e.BranchResp"
+                }
+            }
+        },
+        "responses.BranchesResponseDTO": {
+            "title": "BranchesResponseDTO",
+            "type": "object",
+            "properties": {
+                "Result": {
+                    "$ref": "#/definitions/responses.BranchesData"
+                },
+                "StatusDesc": {
+                    "type": "string"
+                },
+                "Success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "responses.Categories": {
+            "title": "Categories",
+            "type": "object",
+            "properties": {
+                "CategoryId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "CategoryName": {
+                    "type": "string"
+                },
+                "Icon": {
+                    "type": "string"
+                },
+                "ImagePath": {
+                    "type": "string"
+                }
+            }
+        },
+        "responses.CategoriesResponseDTO": {
+            "title": "CategoriesResponseDTO",
+            "type": "object",
+            "properties": {
+                "Result": {
+                    "$ref": "#/definitions/2819.\u003cnil\u003e.Categories"
+                },
+                "StatusDesc": {
+                    "type": "string"
+                },
+                "Success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "responses.CategoryResponseDTO": {
+            "title": "CategoryResponseDTO",
+            "type": "object",
+            "properties": {
+                "Result": {
+                    "$ref": "#/definitions/responses.Categories"
+                },
+                "StatusDesc": {
+                    "type": "string"
+                },
+                "Success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "responses.Countries": {
+            "title": "Countries",
+            "type": "object",
+            "properties": {
+                "Country": {
+                    "type": "string"
+                },
+                "CountryCode": {
+                    "type": "string"
+                },
+                "CountryId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "CreatedBy": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "DateCreated": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "DateModified": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "DefaultCurrency": {
+                    "$ref": "#/definitions/responses.Currencies"
+                },
+                "Description": {
+                    "type": "string"
+                },
+                "ModifiedBy": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "responses.CountriesResponseDTO": {
+            "title": "CountriesResponseDTO",
+            "type": "object",
+            "properties": {
+                "Result": {
+                    "$ref": "#/definitions/1234.\u003cnil\u003e.CountryResp"
+                },
+                "StatusDesc": {
+                    "type": "string"
+                },
+                "Success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "responses.Currencies": {
+            "title": "Currencies",
+            "type": "object",
+            "properties": {
+                "Active": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "CreatedBy": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Currency": {
+                    "type": "string"
+                },
+                "CurrencyId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "DateCreated": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "DateModified": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "ModifiedBy": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Symbol": {
+                    "type": "string"
+                }
+            }
+        },
+        "responses.CustomerGateway": {
+            "title": "CustomerGateway",
+            "type": "object",
+            "properties": {
+                "CustomerId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "DateCreated": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Email": {
+                    "type": "string"
+                },
+                "FullName": {
+                    "type": "string"
+                },
+                "IdentificationNumber": {
+                    "type": "string"
+                },
+                "IdentificationType": {
+                    "$ref": "#/definitions/responses.Identification_types"
+                },
+                "LastDeal": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Location": {
+                    "type": "string"
+                },
+                "PhoneNumber": {
+                    "type": "string"
+                },
+                "Status": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "responses.CustomerGatewayResponseDTO": {
+            "title": "CustomerGatewayResponseDTO",
+            "type": "object",
+            "properties": {
+                "Result": {
+                    "$ref": "#/definitions/responses.CustomerGateway"
+                },
+                "StatusDesc": {
+                    "type": "string"
+                },
+                "Success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "responses.IDTypesGatewayResponseDTO": {
+            "title": "IDTypesGatewayResponseDTO",
+            "type": "object",
+            "properties": {
+                "Result": {
+                    "$ref": "#/definitions/5419.\u003cnil\u003e.IDTypeResponse"
+                },
+                "StatusDesc": {
+                    "type": "string"
+                },
+                "Success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "responses.Identification_types": {
+            "title": "Identification_types",
+            "type": "object",
+            "properties": {
+                "Active": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Code": {
+                    "type": "string"
+                },
+                "IdentificationTypeId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Name": {
+                    "type": "string"
+                }
+            }
+        },
+        "responses.Item": {
+            "title": "Item",
+            "type": "object",
+            "properties": {
+                "Branch": {
+                    "$ref": "#/definitions/responses.BranchResp"
+                },
+                "Description": {
+                    "type": "string"
+                },
+                "ImagePath": {
+                    "type": "string"
+                },
+                "ProductCostPrice": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "ProductId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "ProductName": {
+                    "type": "string"
+                },
+                "ProductPrice": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "ProductType": {
+                    "type": "string"
+                },
+                "Quantity": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "responses.ItemResponseDTO": {
+            "title": "ItemResponseDTO",
+            "type": "object",
+            "properties": {
+                "Result": {
+                    "$ref": "#/definitions/responses.Item"
+                },
+                "StatusDesc": {
+                    "type": "string"
+                },
+                "Success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "responses.ItemsData": {
+            "title": "ItemsData",
+            "type": "object",
+            "properties": {
+                "Count": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Data": {
+                    "$ref": "#/definitions/7579.\u003cnil\u003e.Item"
+                }
+            }
+        },
+        "responses.ItemsResponseDTO": {
+            "title": "ItemsResponseDTO",
+            "type": "object",
+            "properties": {
+                "Result": {
+                    "$ref": "#/definitions/responses.ItemsData"
+                },
+                "StatusDesc": {
+                    "type": "string"
+                },
+                "Success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "responses.PaymentMethodsResponseDTO": {
+            "title": "PaymentMethodsResponseDTO",
+            "type": "object",
+            "properties": {
+                "Result": {
+                    "$ref": "#/definitions/8570.\u003cnil\u003e.PaymentMethods"
+                },
+                "StatusDesc": {
+                    "type": "string"
+                },
+                "Success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "responses.Role": {
+            "title": "Role",
+            "type": "object",
+            "properties": {
+                "Role": {
+                    "type": "string"
+                }
+            }
+        },
+        "responses.RolesAllGatewayResponseDTO": {
+            "title": "RolesAllGatewayResponseDTO",
+            "type": "object",
+            "properties": {
+                "Result": {
+                    "$ref": "#/definitions/9143.\u003cnil\u003e.Roles"
+                },
+                "StatusDesc": {
+                    "type": "string"
+                },
+                "Success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "responses.StringResponseDTO": {
+            "title": "StringResponseDTO",
+            "type": "object",
+            "properties": {
+                "Result": {
+                    "type": "string"
+                },
+                "StatusDesc": {
+                    "type": "string"
+                },
+                "Success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "responses.UserExtraDetails": {
+            "title": "UserExtraDetails",
+            "type": "object",
+            "properties": {
+                "Branch": {
+                    "$ref": "#/definitions/responses.BranchResp"
+                }
+            }
+        },
+        "responses.UserGateway": {
+            "title": "UserGateway",
+            "type": "object",
+            "properties": {
+                "Customer": {
+                    "$ref": "#/definitions/responses.UserExtraDetails"
+                },
+                "DateRegistered": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Email": {
+                    "type": "string"
+                },
+                "FirstName": {
+                    "type": "string"
+                },
+                "ImagePath": {
+                    "type": "string"
+                },
+                "IsVerified": {
+                    "type": "boolean"
+                },
+                "LastName": {
+                    "type": "string"
+                },
+                "PhoneNumber": {
+                    "type": "string"
+                },
+                "Role": {
+                    "$ref": "#/definitions/responses.Role"
+                },
+                "Status": {
+                    "type": "string"
+                },
+                "UserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Username": {
+                    "type": "string"
+                }
+            }
+        },
+        "responses.UserGatewayResponseDTO": {
+            "title": "UserGatewayResponseDTO",
+            "type": "object",
+            "properties": {
+                "Result": {
+                    "$ref": "#/definitions/responses.UserGateway"
+                },
+                "StatusDesc": {
+                    "type": "string"
+                },
+                "Success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "responses.UserInviteResponse": {
+            "title": "UserInviteResponse",
+            "type": "object",
+            "properties": {
+                "Result": {
+                    "$ref": "#/definitions/responses.UserInvites"
+                },
+                "StatusDesc": {
+                    "type": "string"
+                },
+                "Success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "responses.UserInvites": {
+            "title": "UserInvites",
+            "type": "object",
+            "properties": {
+                "DateCreated": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Email": {
+                    "type": "string"
+                },
+                "Role": {
+                    "type": "string"
+                },
+                "Status": {
+                    "type": "string"
+                },
+                "UserInviteId": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "responses.UserInvitesResponse": {
+            "title": "UserInvitesResponse",
+            "type": "object",
+            "properties": {
+                "Result": {
+                    "$ref": "#/definitions/14104.\u003cnil\u003e.UserInvites"
+                },
+                "StatusDesc": {
+                    "type": "string"
+                },
+                "Success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "responses.Users": {
+            "title": "Users",
+            "type": "object",
+            "properties": {
+                "Active": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Address": {
+                    "type": "string"
+                },
+                "Branch": {
+                    "$ref": "#/definitions/responses.BranchResp"
+                },
+                "CreatedBy": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Customer": {
+                    "$ref": "#/definitions/responses.UserExtraDetails"
+                },
+                "DateCreated": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "DateModified": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Dob": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Email": {
+                    "type": "string"
+                },
+                "FullName": {
+                    "type": "string"
+                },
+                "Gender": {
+                    "type": "string"
+                },
+                "IdNumber": {
+                    "type": "string"
+                },
+                "IdType": {
+                    "type": "string"
+                },
+                "ImagePath": {
+                    "type": "string"
+                },
+                "IsVerified": {
+                    "type": "boolean"
+                },
+                "MaritalStatus": {
+                    "type": "string"
+                },
+                "ModifiedBy": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Password": {
+                    "type": "string"
+                },
+                "PhoneNumber": {
+                    "type": "string"
+                },
+                "Role": {
+                    "$ref": "#/definitions/responses.Role"
+                },
+                "UserId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "UserType": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Username": {
+                    "type": "string"
+                }
+            }
+        },
+        "responses.UsersGatewayResponseDTO": {
+            "title": "UsersGatewayResponseDTO",
+            "type": "object",
+            "properties": {
+                "Result": {
+                    "$ref": "#/definitions/9541.\u003cnil\u003e.UserGateway"
+                },
+                "StatusDesc": {
+                    "type": "string"
+                },
+                "Success": {
+                    "type": "boolean"
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "auth",
+            "description": "AuthenticationController operations for Authentication\n"
+        },
+        {
+            "name": "user",
+            "description": "UserManagementController operations for UserManagement\n"
+        },
+        {
+            "name": "app-service",
+            "description": "SystemController operations for System\n"
+        },
+        {
+            "name": "items",
+            "description": "ItemsController operations for Items\n"
+        },
+        {
+            "name": "order",
+            "description": "TransactionsController operations for Transactions\n"
+        },
+        {
+            "name": "stats",
+            "description": "StatsController operations for Stats\n"
+        },
+        {
+            "name": "payments",
+            "description": "PaymentController operations for Payment\n"
+        },
+        {
+            "name": "customers",
+            "description": "CustomermanagementController operations for Customermanagement\n"
+        }
+    ]
+}
