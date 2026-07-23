@@ -16,10 +16,10 @@ func main() {
 		beego.BConfig.WebConfig.StaticDir["/swagger"] = "swagger"
 	}
 
-	logs.SetLogger(logs.AdapterFile, `{"filename":"../logs/AMC-gateway.log"}`)
+	logs.SetLogger(logs.AdapterFile, `{"filename":"../logs/rides-gateway.log"}`)
 
 	beego.InsertFilter("*", beego.BeforeRouter, cors.Allow(&cors.Options{
-		AllowOrigins:     []string{"http://localhost:5173", "http://localhost:5174", "https://api.amc-flowpos.com"},
+		AllowOrigins:     []string{"http://localhost:5173", "http://localhost:5174"},
 		AllowMethods:     []string{"PUT", "PATCH", "POST", "GET", "DELETE", "OPTIONS"},
 		AllowHeaders:     []string{"Origin", "Content-Type", "X-Requested-With", "Authorization"},
 		ExposeHeaders:    []string{"Content-Length"},

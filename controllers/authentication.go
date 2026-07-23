@@ -23,6 +23,8 @@ func (c *AuthenticationController) URLMapping() {
 	c.Mapping("SignIn", c.SignIn)
 	c.Mapping("Register", c.Register)
 	c.Mapping("ChangePassword", c.ChangePassword)
+	c.Mapping("SendActivationCode", c.SendActivationCode)
+	c.Mapping("VerifyActivationCode", c.VerifyActivationCode)
 }
 
 // Register User ...
@@ -168,6 +170,72 @@ func (c *AuthenticationController) SignIn() {
 	}
 
 	var resp responses.StringResponseDTO = responses.StringResponseDTO{Success: isSuccess, Result: tkn, StatusDesc: loginResp.StatusDesc}
+
+	c.Data["json"] = resp
+
+	c.ServeJSON()
+}
+
+// Send OTP ...
+// @Title Send OTP
+// @Description Send OTP
+// @Param	body		body 	requests.SendOTP	true		"body for Authentication content"
+// @Success 200 {object} responses.StringResponseDTO
+// @Failure 403 body is empty
+// @router /send-activation-code [post]
+func (c *AuthenticationController) SendActivationCode() {
+	var v requests.SendOTP
+	json.Unmarshal(c.Ctx.Input.RequestBody, &v)
+	logs.Info("Send activation code request received")
+	logs.Info("mobile number is ", v.MobileNumber)
+
+	sendCodeResp := functions.SendActivationCode(&c.Controller, v.MobileNumber)
+
+	// var data models.UserGateway
+
+	var isSuccess bool = false
+	var message string
+
+	if sendCodeResp.StatusCode == 200 {
+
+		isSuccess = true
+		message = "SUCCESS"
+	}
+
+	var resp responses.StringResponseDTO = responses.StringResponseDTO{Success: isSuccess, Result: &message, StatusDesc: sendCodeResp.StatusDesc}
+
+	c.Data["json"] = resp
+
+	c.ServeJSON()
+}
+
+// Verify OTP ...
+// @Title Verify OTP
+// @Description Verify OTP
+// @Param	body		body 	requests.VerifyOTP	true		"body for Authentication content"
+// @Success 200 {object} responses.StringResponseDTO
+// @Failure 403 body is empty
+// @router /verify-activation-code [post]
+func (c *AuthenticationController) VerifyActivationCode() {
+	var v requests.VerifyOTP
+	json.Unmarshal(c.Ctx.Input.RequestBody, &v)
+
+	logs.Info("Request received to verify activation code ", v.Code, " and mobile number ", v.MobileNumber)
+
+	verifyCodeResp := functions.VerifyActivationCode(&c.Controller, v.MobileNumber, v.Code)
+
+	// var data models.UserGateway
+
+	var isSuccess bool = false
+	var message string
+
+	if verifyCodeResp.StatusCode == 200 {
+
+		isSuccess = true
+		message = "SUCCESS"
+	}
+
+	var resp responses.StringResponseDTO = responses.StringResponseDTO{Success: isSuccess, Result: &message, StatusDesc: verifyCodeResp.StatusDesc}
 
 	c.Data["json"] = resp
 

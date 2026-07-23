@@ -48,6 +48,150 @@ func SignInRequest(c *beego.Controller, req requests.SignIn) (resp responses.Str
 	return data
 }
 
+func SendOTP(c *beego.Controller, phoneNumber string) (resp responses.StringOriResponseDTO) {
+	host, _ := beego.AppConfig.String("authenticationBaseUrl")
+
+	logs.Info("Sending OTP to ", phoneNumber)
+
+	request := api.NewRequest(
+		host,
+		"/v1/auth/send-activation-code",
+		api.POST)
+	request.InterfaceParams["MobileNumber"] = phoneNumber
+	// request.Params = {"UserId": strconv.Itoa(int(userid))}
+	client := api.Client{
+		Request: request,
+		Type_:   "body",
+	}
+	res, err := client.SendRequest()
+	if err != nil {
+		logs.Error("client.Error: %v", err)
+		c.Data["json"] = err.Error()
+	}
+	defer res.Body.Close()
+	read, err := io.ReadAll(res.Body)
+	if err != nil {
+		c.Data["json"] = err.Error()
+	}
+
+	logs.Info("Raw response received is ", res)
+	// data := map[string]interface{}{}
+	var data responses.StringOriResponseDTO
+	json.Unmarshal(read, &data)
+	c.Data["json"] = data
+
+	return data
+}
+
+func VerifyOTP(c *beego.Controller, req requests.SignIn) (resp responses.StringOriResponseDTO) {
+	host, _ := beego.AppConfig.String("authenticationBaseUrl")
+
+	logs.Info("Sending email ", req.Email)
+	logs.Info("Sending password ", req.Password)
+
+	request := api.NewRequest(
+		host,
+		"/v1/auth/verify-activation-code",
+		api.POST)
+	request.InterfaceParams["Username"] = req.Email
+	request.InterfaceParams["Password"] = req.Password
+	// request.Params = {"UserId": strconv.Itoa(int(userid))}
+	client := api.Client{
+		Request: request,
+		Type_:   "body",
+	}
+	res, err := client.SendRequest()
+	if err != nil {
+		logs.Error("client.Error: %v", err)
+		c.Data["json"] = err.Error()
+	}
+	defer res.Body.Close()
+	read, err := io.ReadAll(res.Body)
+	if err != nil {
+		c.Data["json"] = err.Error()
+	}
+
+	logs.Info("Raw response received is ", res)
+	// data := map[string]interface{}{}
+	var data responses.StringOriResponseDTO
+	json.Unmarshal(read, &data)
+	c.Data["json"] = data
+
+	return data
+}
+
+func SendActivationCode(c *beego.Controller, phoneNumber string) (resp responses.StringOriResponseDTO) {
+	host, _ := beego.AppConfig.String("authenticationBaseUrl")
+
+	logs.Info("Sending OTP to ", phoneNumber)
+
+	request := api.NewRequest(
+		host,
+		"/v1/auth/send-activation-code",
+		api.POST)
+	request.InterfaceParams["MobileNumber"] = phoneNumber
+	// request.Params = {"UserId": strconv.Itoa(int(userid))}
+	client := api.Client{
+		Request: request,
+		Type_:   "body",
+	}
+	res, err := client.SendRequest()
+	if err != nil {
+		logs.Error("client.Error: %v", err)
+		c.Data["json"] = err.Error()
+	}
+	defer res.Body.Close()
+	read, err := io.ReadAll(res.Body)
+	if err != nil {
+		c.Data["json"] = err.Error()
+	}
+
+	logs.Info("Raw response received is ", res)
+	// data := map[string]interface{}{}
+	var data responses.StringOriResponseDTO
+	json.Unmarshal(read, &data)
+	c.Data["json"] = data
+
+	return data
+}
+
+func VerifyActivationCode(c *beego.Controller, number string, code string) (resp responses.StringOriResponseDTO) {
+	host, _ := beego.AppConfig.String("authenticationBaseUrl")
+
+	logs.Info("Sending number ", number)
+	logs.Info("Sending password ", code)
+
+	request := api.NewRequest(
+		host,
+		"/v1/auth/verify-activation-code",
+		api.POST)
+	request.InterfaceParams["MobileNumber"] = number
+	request.InterfaceParams["Password"] = code
+	// request.Params = {"UserId": strconv.Itoa(int(userid))}
+	client := api.Client{
+		Request: request,
+		Type_:   "body",
+	}
+	res, err := client.SendRequest()
+	if err != nil {
+		logs.Error("client.Error: %v", err)
+		c.Data["json"] = err.Error()
+	}
+	defer res.Body.Close()
+	read, err := io.ReadAll(res.Body)
+	if err != nil {
+		c.Data["json"] = err.Error()
+	}
+
+	logs.Info("Raw response received is ", res)
+	// data := map[string]interface{}{}
+	var data responses.StringOriResponseDTO
+	json.Unmarshal(read, &data)
+	c.Data["json"] = data
+
+	return data
+}
+
 func ChangePassword(c *beego.Controller, userid string, req requests.ChangePassword) (resp responses.StringOriResponseDTO) {
 	host, _ := beego.AppConfig.String("authenticationBaseUrl")
 

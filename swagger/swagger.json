@@ -395,6 +395,37 @@
                 }
             }
         },
+        "/auth/send-activation-code": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "description": "Send OTP\n\u003cbr\u003e",
+                "operationId": "AuthenticationController.Send OTP",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Authentication content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/requests.SendOTP"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.StringResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
         "/auth/sign-in": {
             "post": {
                 "tags": [
@@ -410,6 +441,37 @@
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/requests.SignIn"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/responses.StringResponseDTO"
+                        }
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/auth/verify-activation-code": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "description": "Verify OTP\n\u003cbr\u003e",
+                "operationId": "AuthenticationController.Verify OTP",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Authentication content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/requests.VerifyOTP"
                         }
                     }
                 ],
@@ -2111,6 +2173,15 @@
                 }
             }
         },
+        "requests.SendOTP": {
+            "title": "SendOTP",
+            "type": "object",
+            "properties": {
+                "MobileNumber": {
+                    "type": "string"
+                }
+            }
+        },
         "requests.SignIn": {
             "title": "SignIn",
             "type": "object",
@@ -2216,6 +2287,18 @@
                 "RoleId": {
                     "type": "integer",
                     "format": "int64"
+                }
+            }
+        },
+        "requests.VerifyOTP": {
+            "title": "VerifyOTP",
+            "type": "object",
+            "properties": {
+                "Code": {
+                    "type": "string"
+                },
+                "MobileNumber": {
+                    "type": "string"
                 }
             }
         },
